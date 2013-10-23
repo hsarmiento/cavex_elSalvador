@@ -168,51 +168,49 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/cavex_elSalvador/'.'footer.php');
 			  errorPlacement: function(error, element) {      
         	}
 	    });
-
-    $(function () {
-	      $(document).ready(function() {
+	     var dataJson_radio = null;
+	     $(document).ready(function() {
 	      	var json_radio_id = $.ajax({
 		           url: 'json_get_radio_id.php', // make this url point to the data file
 		           dataType: 'json',
 		           async: false
 		          }).responseText;
-
             var dataJson_radio = eval(json_radio_id);
+            setInterval(function() {          
+	          var n = 0;
+	          var m = 0;
+	          for (var i in dataJson_radio){
+	             radio_id = dataJson_radio[i].radio_id;
+	             var json_rms = $.ajax({
+	               url: 'json_rms_value.php?radio_id='+radio_id, 
+	               dataType: 'json',
+	               async: false
+	              }).responseText;
 
-	      	setInterval(function() {	          
-		          var n = 0;
-		          var m = 0;
-		          for (var i in dataJson_radio){
-		             radio_id = dataJson_radio[i].radio_id;
-		             var json_rms = $.ajax({
-		               url: 'json_rms_value.php?radio_id='+radio_id, 
-		               dataType: 'json',
-		               async: false
-		              }).responseText;
+	             var json_sd = $.ajax({
+	               url: 'json_sd_value.php?radio_id='+radio_id, 
+	               dataType: 'json',
+	               async: false
+	              }).responseText;
 
-		             var json_sd = $.ajax({
-		               url: 'json_sd_value.php?radio_id='+radio_id, 
-		               dataType: 'json',
-		               async: false
-		              }).responseText;
+	              var dataJson_rms = eval(json_rms);
+	              for (var i in dataJson_rms){
+	                 rms = dataJson_rms[i].value; 
+	                 $('#rms_calibration'+n.toString()).text(rms); 
+	                 n = n + 1;                        
+	              }
 
-		              var dataJson_rms = eval(json_rms);
-		              for (var i in dataJson_rms){
-		                 rms = dataJson_rms[i].value; 
-		                 $('#rms_calibration'+n.toString()).text(rms); 
-		                 n = n + 1;                        
-		              }
+	              var dataJson_sd = eval(json_sd);
+	              for (var i in dataJson_sd){   
+	                 sd = dataJson_sd[i].value; 
+	                 $('#sd_calibration'+m.toString()).text(sd); 
+	                 m = m + 1;                         
+	              }
+	          }
+	      }, 3000);
+        });
 
-		              var dataJson_sd = eval(json_sd);
-		              for (var i in dataJson_sd){   
-		                 sd = dataJson_sd[i].value; 
-		                 $('#sd_calibration'+m.toString()).text(sd); 
-		                 m = m + 1;                         
-		              }
-		          }
-		      }, 1000);
-	      });
-	  });
+      	
 
 
 
