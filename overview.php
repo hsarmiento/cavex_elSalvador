@@ -11,7 +11,7 @@
 	    $oModel->Select($query_chart);
 	    $query_event = "INSERT INTO eventos_alarmas(tipo)values(7);";
 	    $oModel->Select($query_event);
-	    header("Location: overview.php?");  
+	    // header("Location: overview.php");  
 	}
 	
 	$query_radios = "SELECT id,mac,identificador from radios where grupo = '".$group."' and estado = 1 order by identificador asc;";
@@ -83,7 +83,7 @@
 			<div class="span3 form-chart">
 	            <h4>Gauge configuration</h4>
 	            <div id="value_gauge_conf">Enter a value between 0 to 200</div>
-	            <form  id="rms_set_chart" method="post" name="rms_set_chart" action="overview.php" enctype="multipart/form-data">
+	            <form  id="rms_set_chart" method="post" name="rms_set_chart" action="overview.php?group=<?=$group?>" enctype="multipart/form-data">
 	              <div class="controls controls-row">
 	                <label class="span1" for="rms_min_chart">Min value</label>
 	                <label class="span1 offset2" for="rms_max_chart">Max value</label>
