@@ -12,10 +12,10 @@ if(!empty($form['save_radio'])){
 		$MAC = $form['mac1'].$form['mac2'].$form['mac3'].$form['mac4'];
 		$oRadio = new BSModel();
 		if($form['insert_update'] == 'update'){
-			$query_new_radio = "UPDATE radios set estado = 1, identificador = '".$form['identifier']."' where mac = '".$MAC."';";
+			$query_new_radio = "UPDATE radios set estado = 1, identificador = '".$form['identifier']."', grupo = '".$form['group']."' where mac = '".$MAC."';";
 			$oRadio->Select($query_new_radio);
 		}else{
-			$query_new_radio = "INSERT INTO radios(mac,identificador,estado)values('".$MAC."', '".$form['identifier']."',0);";
+			$query_new_radio = "INSERT INTO radios(mac,identificador,estado,grupo)values('".$MAC."', '".$form['identifier']."',0, '".$form['group']."');";
 			$oRadio->Select($query_new_radio);	
 		}
 		$query_radio = "SELECT * from radios where mac = '".$MAC."';";
@@ -67,6 +67,10 @@ $aRadios = $oRadio->Select($query_radios);
 				  	  <label for="identifier"><strong>Identifier</strong></label>	
 				  	  <input type="text" class="span2 required" id="identifier" name="identifier" title="Use letters or numbers">
 				  </p>
+				  <p>
+				  	  <label for="group"><strong>Group</strong></label>	
+				  	  <input type="text" class="span2 required" id="group" name="group" title="Use letters or numbers">
+				  </p>
 				  
 				  <input type="submit" class="btn btn-primary" id="save-radio" name="save_radio" value="Save">
 				  
@@ -75,7 +79,7 @@ $aRadios = $oRadio->Select($query_radios);
 		</div>	
 	<?php }else{ ?>
 		<div id="limit_radios" class="alert alert-warning" >
-			You have 6 radios, to add a new radio. Please contact your provider.
+			You have 12 radios, to add a new radio. Please contact your provider.
 		</div>
 	<?php } ?>
 </div>

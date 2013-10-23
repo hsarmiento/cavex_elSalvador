@@ -54,7 +54,13 @@ $save_title = $_GET['save_title'];
 			<?php } ?>
 			<?php if($_SESSION['usertype'] == 1){?>
 				<p>
-				  <button class="btn btn-L btn-primary" type="button" onclick="window.location.href='/cavex_elSalvador/system_calibration.php'">System Calibration</button>
+				  <button class="btn btn-L btn-primary" type="button" data-toggle="collapse" data-target="#calibration_collapse">System calibration<b class="caret caret-body"></b></button>
+					<div id="calibration_collapse" class="collapse" style="margin-bottom:10px">
+						<?php foreach ($aGroup as $group) { ?>
+							<button class="btn btn-sub btn-primary" type="button" onclick="window.location.href='/cavex_elSalvador/system_calibration.php?group=<?=$group["grupo"]?>'"><?=$group["grupo"]?></button>
+						<?} ?>
+				  	</div>	
+				  <!-- <button class="btn btn-L btn-primary" type="button" onclick="window.location.href='/cavex_elSalvador/system_calibration.php'">System Calibration</button> -->
 				</p>
 					<button class="btn btn-L btn-primary" type="button" data-toggle="collapse" data-target="#radio_collapse">Radios<b class="caret caret-body"></b></button>
 					<div id="radio_collapse" class="collapse" style="margin-bottom:10px">

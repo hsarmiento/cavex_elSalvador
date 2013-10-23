@@ -6,6 +6,7 @@ $oLogin = new BSLogin();
 $oLogin->IsLogged("admin");
 $save = false;
 $form = $_POST['radio'];
+$group = $_GET['group'];
 if(!empty($_POST['save'])){
 	$oParametros = new BSModel();
 	foreach ($form as $value) {
@@ -23,7 +24,7 @@ parametros.rms_max_normal_porcentaje as rms_max_normal,
 parametros.rms_ropping_porcentaje as rms_ropping, 
 parametros.sd_normal as sd_normal, parametros.sd_max_normal_porcentaje as sd_max_normal, 
 parametros.sd_ropping_porcentaje as sd_ropping
-from radios left join parametros on radios.id = parametros.radio_id where radios.estado = 1 order by radios.id asc;";
+from radios left join parametros on radios.id = parametros.radio_id where grupo = '".$group."' and radios.estado = 1 order by radios.id asc;";
 $aRadios = $oRadios->Select($query_radios);
 // $query_radios_conn = "select count(*) as count from radios where estado = 1;";
 // $aRadiosConn = $oRadios->Select($query_radios_conn);
@@ -37,7 +38,7 @@ $aRadios = $oRadios->Select($query_radios);
 	    	Saved settings
 	  	</div>
 	<?php } ?>
-  <h2>System Calibration</h2>
+  <h2>System Calibration <?=$group?></h2>
   	  <div class="span12 contenedor">
   	  	<?php if(count($aRadios)  == 0) { ?>
 			<div id="empty_radios" class="alert alert-warning">
@@ -45,7 +46,7 @@ $aRadios = $oRadios->Select($query_radios);
 		  	</div>
 		<?php } ?>
   	  	<?php if(count($aRadios) > 0) {?>
-	  	  	<form name="set_parametros" action="system_calibration.php" id="set_parametros_form" method="post" enctype="multipart/form-data">
+	  	  	<form name="set_parametros" action="system_calibration.php?group=<?=$group?>" id="set_parametros_form" method="post" enctype="multipart/form-data">
 		  	  	<?php foreach ($aRadios as $i=>$radio) { ?>
 		  	  		<input type="hidden" value="<?=$radio['radio_id']?>" name="radio[<?=$i?>][radio_id]">
 		  	  		<div class="span11 offset1 calibration-radio">

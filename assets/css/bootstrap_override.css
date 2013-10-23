@@ -1273,3 +1273,12 @@ ul.letter{
     left: 730px;
     display: none;
 }
+
+#calibration_collapse{
+    width: 400px !important;
+}
+
+#group{
+    margin-left: 43px;
+    width: 138px;
+}

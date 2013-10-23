@@ -8,7 +8,7 @@ $oLogin = new BSLogin();
 $oLogin->IsLogged("admin");
 
 $oModel = new BSModel();
-$query_radios = "SELECT radios.id as radio_id, radios.mac as mac, radios.estado as estado, bateria_radio.conectada as bateria_conectada, bateria_radio.conectada as estado_bateria, bateria_radio.carga as carga, radios.identificador as identificador from radios left join bateria_radio on radios.id = bateria_radio.radio_id order by radios.id asc;";
+$query_radios = "SELECT radios.id as radio_id, radios.mac as mac, radios.estado as estado, bateria_radio.conectada as bateria_conectada, bateria_radio.conectada as estado_bateria, bateria_radio.carga as carga, radios.identificador as identificador, radios.grupo as grupo from radios left join bateria_radio on radios.id = bateria_radio.radio_id order by radios.id asc;";
 $aRadios = $oModel->Select($query_radios);
 
 $is_save = $_GET['save_radio'];
@@ -39,6 +39,7 @@ $is_update = $_GET['update_radio'];
 			      <th>Status</th>
 			      <th>Battery</th>
 			      <th>Battery Charge</th>
+			      <th>Group</th>
 			      <th>Actions</th>
 			    </tr>
 			</thead>
@@ -73,15 +74,18 @@ $is_update = $_GET['update_radio'];
 				      					echo $radio['carga'].'%';
 			      					 }	
 					      		}?>
+				      	</td>
+				      	<td>
+				      		<?=$radio['grupo']?>
 				      	</td>	
-				      <td>
+				      	<td>
 				      		<div class="edit_div">
 				      			<a href="edit_radio.php?radio_id=<?=$radio['radio_id']?>&n_radio=<?=$i?>">
 									<img src="assets/img/Text-Edit-icon.png" alt="edit user" width="25" height="25" title="Edit radio">
 								</a>
 				      		</div>					
 							<a href="delete_radio.php?radio_id=<?=$radio['radio_id']?>" onclick="return confirm('Are you ABSOLUTELY sure?')"><img src="assets/img/DeleteRed.png" alt="delete user" width="25" height="25" title="Delete radio"></a>
-			      	  </td>
+			      	  	</td>
 				    </tr>
 				    <?php $i = $i + 1;?>
 				<?php } ?>

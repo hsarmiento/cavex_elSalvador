@@ -12,6 +12,9 @@ $title_cavex = 'Cavex';
 if(!empty($aTitle)){
 	$title_cavex = $aTitle[0]['texto'];
 }
+$query_group = "SELECT grupo from radios group by grupo order by grupo asc;";
+$aGroup = $oModel->Select($query_group);
+
 
 
 ?>
@@ -50,8 +53,15 @@ if(!empty($aTitle)){
 					<ul class="nav nav-pills">
 					  <li><a href="/cavex_elSalvador/home.php">Home</a></li>
 					  <?php if($_SESSION['usertype'] == 1){?>
-						<li><a href="/cavex_elSalvador/system_calibration.php">System calibration</a></li>
 					  	<li class="dropdown">
+						  	<a class="dropdown-toggle" data-toggle="dropdown" href="#">System calibration <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<?php foreach ($aGroup as $group) { ?>
+										<li><a href="system_calibration.php?group=<?=$group['grupo']?>"><?=$group['grupo']?></a></li>
+								<?php } ?>
+						  	</ul> 
+					  	</li>
+					  <li class="dropdown">
 						  	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Radios<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/cavex_elSalvador/add_radio.php">Add radio</a></li>
@@ -59,7 +69,7 @@ if(!empty($aTitle)){
 						  	</ul> 
 					  </li>
 					  <?php } ?>				  
-					  <li><a href="/cavex_elSalvador/general_overview.php">Overview</a></li>
+					  <li><a href="/cavex_elSalvador/general_overview.php">General overview</a></li>
 					  <li><a href="/cavex_elSalvador/alarms_events.php">Alarms & events</a></li>
 					  <?php if($_SESSION['usertype'] == 1){?>
 						  <li class="dropdown">
