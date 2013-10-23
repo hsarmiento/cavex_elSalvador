@@ -104,10 +104,6 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/cavex_elSalvador/'.'footer.php');
 
 ?>
 
-<script type="text/javascript" src="<? echo $aRoutes['paths']['js']?>highcharts.js"></script>
-<script type="text/javascript" src="<? echo $aRoutes['paths']['js']?>/modules/exporting.js"></script>
-<script type="text/javascript" src="<? echo $aRoutes['paths']['js']?>highcharts-more.js"></script>
-
 <script type="text/javascript">
 	
 	<?php if(count($aGroup) > 0){ ?>

@@ -63,7 +63,7 @@ $save_title = $_GET['save_title'];
 				  	</div>	
 			<?php } ?>
 			<p>
-			  <button class="btn btn-L btn-primary" type="button" onclick="window.location.href='/cavex_elSalvador/overview.php'">Overview</button>
+			  <button class="btn btn-L btn-primary" type="button" onclick="window.location.href='/cavex_elSalvador/general_overview.php'">General Overview</button>
 			</p>
 			<p>
 			  <button class="btn btn-L btn-primary" type="button" onclick="window.location.href='/cavex_elSalvador/alarms_events.php'">Alarms & Events</button>
