@@ -1145,7 +1145,7 @@ ul.letter{
 
 
 .overview-group-right{
-    padding: 20px 0 20px 20px;
+    padding: 20px 20px 20px 20px;
     margin-bottom: 50px;
     border-radius: 3px 3px 3px 3px;
     -moz-border-radius: 3px 3px 3px 3px;
@@ -1298,5 +1298,5 @@ ul.letter{
     border-bottom: 2px solid #BBBBBB; 
     width: 86%;
     height: 1px;
-    z-index: 1;
+    z-index: -1;
 }

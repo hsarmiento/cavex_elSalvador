@@ -51,7 +51,7 @@
 				<?=$aGroup[0]['grupo']?>
 			</div>
 			<div class="general-status" id="general-status1"></div>
-			<div class="img_pila"><img src="assets/img/Pila_3_rev.png"></div>
+			<div class="img_pila"><a href="overview.php?group=<?=$aGroup[0]['grupo']?>"><img src="assets/img/Pila_3_rev.png"></a></div>
 			<div class="link-group">
 				<a href="overview.php?group=<?=$aGroup[0]['grupo']?>">Group overview</a>
 			</div>
@@ -65,7 +65,7 @@
 				<?=$aGroup[1]['grupo']?>
 			</div>
 			<div class="general-status" id="general-status2"></div>
-			<div class="img_pila"><img src="assets/img/Pila_3_rev.png"></div>
+			<div class="img_pila"><a href="overview.php?group=<?=$aGroup[1]['grupo']?>"><img src="assets/img/Pila_3_rev.png"></a></div>
 			<div class="link-group">
 				<a href="overview.php?group=<?=$aGroup[1]['grupo']?>">Group overview</a>
 
@@ -79,7 +79,7 @@
 				<?=$aGroup[2]['grupo']?>
 			</div>
 			<div class="general-status" id="general-status3"></div>
-			<div class="img_pila"><img src="assets/img/Pila_3_rev.png"></div>
+			<div class="img_pila"><a href="overview.php?group=<?=$aGroup[2]['grupo']?>"><img src="assets/img/Pila_3_rev.png"></a></div>
 			<div class="link-group">
 				<a href="overview.php?group=<?=$aGroup[2]['grupo']?>">Group overview</a>
 			</div>
@@ -92,7 +92,7 @@
 				<?=$aGroup[3]['grupo']?>
 			</div>
 			<div class="general-status" id="general-status4"></div>
-			<div class="img_pila"><img src="assets/img/Pila_3_rev.png"></div>
+			<div class="img_pila"><a href="overview.php?group=<?=$aGroup[3]['grupo']?>"><img src="assets/img/Pila_3_rev.png"></a></div>
 			<div class="link-group">
 				<a href="overview.php?group=<?=$aGroup[3]['grupo']?>">Group overview</a>
 			</div>
