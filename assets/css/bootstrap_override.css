@@ -1186,7 +1186,7 @@ ul.letter{
     margin: 0 auto;
     padding-bottom: 5px;
     color: #333333;
-    font-size: 17px;
+    font-size: 22px;
     font-weight: bold;
     text-align: center;
 
@@ -1281,4 +1281,22 @@ ul.letter{
 #group{
     margin-left: 43px;
     width: 138px;
+}
+
+#barra_vertical{
+    position: absolute;
+    margin-left: 600px;
+    border-left: 2px solid #BBBBBB; 
+    width:1px;
+    height: 650px;
+    z-index: -1;
+}
+
+#barra_horizontal{
+    position: absolute;
+    margin-top: 315px;
+    border-bottom: 2px solid #BBBBBB; 
+    width: 86%;
+    height: 1px;
+    z-index: 1;
 }

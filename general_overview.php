@@ -57,6 +57,7 @@
 			</div>
 		</div>
 	<?php } ?>
+  <div id="barra_vertical"></div>
 	
 	<?php if(count($aGroup) > 1){ ?>
 		<div class="overview-group-right">
@@ -71,7 +72,7 @@
 			</div>
 		</div>
 	<?php } ?>
-
+  <div id="barra_horizontal"></div>
 	<?php if(count($aGroup) > 2){ ?>
 		<div class="overview-group-left">
 			<div class="title-group">
