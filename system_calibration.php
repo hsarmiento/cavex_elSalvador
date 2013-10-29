@@ -168,13 +168,15 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/cavex_elSalvador/'.'footer.php');
 			  errorPlacement: function(error, element) {      
         	}
 	    });
-	     var dataJson_radio = null;
-	     $(document).ready(function() {
+
+    $(function () {
+	      $(document).ready(function() {
 	      	var json_radio_id = $.ajax({
 		           url: 'json_get_radio_id.php', // make this url point to the data file
 		           dataType: 'json',
 		           async: false
 		          }).responseText;
+
             var dataJson_radio = eval(json_radio_id);
             setInterval(function() {          
 	          var n = 0;
