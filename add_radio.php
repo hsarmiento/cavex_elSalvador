@@ -5,6 +5,7 @@ require_once($aRoutes['paths']['config'].'bs_model.php');
 $oLogin = new BSLogin();
 $oLogin->IsLogged("admin");
 $is_save = false;
+$realCount = 78;
 
 $form = $_POST;
 if(!empty($form['save_radio'])){
@@ -15,8 +16,11 @@ if(!empty($form['save_radio'])){
 			$query_new_radio = "UPDATE radios set estado = 1, identificador = '".$form['identifier']."', grupo = '".$form['group']."' where mac = '".$MAC."';";
 			$oRadio->Select($query_new_radio);
 		}else{
-			$query_new_radio = "INSERT INTO radios(mac,identificador,estado,grupo)values('".$MAC."', '".$form['identifier']."',0, '".$form['group']."');";
-			$oRadio->Select($query_new_radio);	
+			$getIdSum = "SELECT SUM(id) AS actualCount FROM radios;";
+			$actualSum = $oRadio->Select($getIdSum);
+			$realId = $realCount - $actualSum[0]['actualCount'];
+			$query_new_radio = "INSERT INTO radios(id,mac,identificador,estado,grupo)values(".$realId.",'".$MAC."', '".$form['identifier']."',0, '".$form['group']."');";
+			$oRadio->Select($query_new_radio);
 		}
 		$query_radio = "SELECT * from radios where mac = '".$MAC."';";
 		$aRadio = $oRadio->Select($query_radio);
@@ -32,7 +36,6 @@ $query_empty_radios = "SELECT * from radios where estado = -1;";
 $aRadiosEmpty = $oRadio->Select($query_empty_radios);
 $query_radios = "SELECT count(*) as count from radios where estado = 1 or estado = 0;";
 $aRadios = $oRadio->Select($query_radios);
-
 
 ?>
 

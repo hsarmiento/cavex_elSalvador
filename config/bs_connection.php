@@ -12,7 +12,7 @@ class BSConnection extends PDO
 	private $m_strHostname = "localhost";
 	private $m_strDatabase = "cavex_elsalvador";
 	private $m_strUsername = "root";
-	private $m_strPassword = "legend";
+	private $m_strPassword = "cba123*";
 
 	// private $m_strDNS = "mysql";
 	// private $m_strHostname = "localhost";

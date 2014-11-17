@@ -211,6 +211,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/cavex_elSalvador/'.'footer.php');
 	          }
 	      }, 3000);
         });
+	});
 
       	
 
