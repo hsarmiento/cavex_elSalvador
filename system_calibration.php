@@ -172,7 +172,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/cavex_elSalvador/'.'footer.php');
     $(function () {
 	      $(document).ready(function() {
 	      	var json_radio_id = $.ajax({
-		           url: 'json_get_radio_id.php', // make this url point to the data file
+		           url: 'json_get_radio_id.php?group=<?=$group?>', // make this url point to the data file
 		           dataType: 'json',
 		           async: false
 		          }).responseText;
@@ -197,7 +197,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/cavex_elSalvador/'.'footer.php');
 
 	              var dataJson_rms = eval(json_rms);
 	              for (var i in dataJson_rms){
-	                 rms = dataJson_rms[i].value; 
+	                 rms = dataJson_rms[i].value;
 	                 $('#rms_calibration'+n.toString()).text(rms); 
 	                 n = n + 1;                        
 	              }
@@ -212,9 +212,5 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/cavex_elSalvador/'.'footer.php');
 	      }, 3000);
         });
 	});
-
-      	
-
-
 
 </script>
